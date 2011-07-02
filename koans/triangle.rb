@@ -14,6 +14,14 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
+  if a <= 0 or b <= 0 or c <= 0
+    raise TriangleError, "Side length must be greater than 0."
+  end
+
+  if a >= b + c or b >= a + c or c >= a + b
+    raise TriangleError, "Triangle (#{a},#{b},#{c}) is impossible"
+  end
+
   if a == b and b == c
     :equilateral
   elsif a == b or b == c or a == c
